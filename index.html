@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cơ Học Kỹ Thuật – Bài giảng tương tác</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Cơ Học Kỹ Thuật <span>— Bài giảng tương tác</span></h1>
+  <p class="subtitle">ME2040 / ME2112 · Bộ môn Cơ học ứng dụng, Trường Cơ khí, Đại học Bách Khoa Hà Nội</p>
+  <nav id="main-nav">
+    <button class="nav-btn active" data-target="ch7">Chương 7<br><small>Chuyển động tương đối của điểm</small></button>
+    <button class="nav-btn" data-target="ch8">Chương 8<br><small>Chuyển động song phẳng</small></button>
+    <button class="nav-btn" data-target="ch9">Chương 9<br><small>Động học vật rắn không gian</small></button>
+    <button class="nav-btn" data-target="ch13">Chương 13<br><small>Công &amp; Năng lượng</small></button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- CHƯƠNG 7 -->
+<!-- ============================================================ -->
+<section id="ch7" class="chapter active">
+  <div class="theory">
+    <h2>Chương 7 — Chuyển động tương đối của điểm</h2>
+
+    <h3>1. Ba loại chuyển động</h3>
+    <p>Xét điểm <b>P</b> chuyển động đối với hệ quy chiếu động <b>R₁</b> (gắn vào một vật/khung đang chuyển động),
+    trong khi hệ động <b>R₁</b> lại chuyển động đối với hệ quy chiếu cố định <b>R₀</b>.</p>
+    <ul>
+      <li><b>Chuyển động tuyệt đối</b>: chuyển động của P đối với hệ cố định R₀ → vận tốc <b>v<sub>a</sub></b>, gia tốc <b>a<sub>a</sub></b>.</li>
+      <li><b>Chuyển động tương đối</b>: chuyển động của P đối với hệ động R₁ → <b>v<sub>r</sub></b>, <b>a<sub>r</sub></b>.</li>
+      <li><b>Chuyển động theo</b>: chuyển động "mang theo" của hệ R₁ đối với R₀, tức chuyển động của điểm gắn cứng
+      với R₁ trùng vị trí tức thời của P → <b>v<sub>e</sub></b>, <b>a<sub>e</sub></b>.</li>
+    </ul>
+
+    <h3>2. Công thức cộng vận tốc</h3>
+    <p class="formula">v<sub>a</sub> = v<sub>e</sub> + v<sub>r</sub></p>
+
+    <h3>3. Công thức cộng gia tốc</h3>
+    <p class="formula">a<sub>a</sub> = a<sub>e</sub> + a<sub>r</sub> + a<sub>C</sub></p>
+    <p><b>Gia tốc Coriolis:</b></p>
+    <p class="formula">a<sub>C</sub> = 2 ω<sub>e</sub> × v<sub>r</sub> &nbsp; , &nbsp; |a<sub>C</sub>| = 2ω<sub>e</sub>v<sub>r</sub>sin(ω<sub>e</sub>, v<sub>r</sub>)</p>
+    <ul>
+      <li>a<sub>C</sub> = 0 khi hệ động không quay (ω<sub>e</sub>=0) hoặc khi v<sub>r</sub> song song trục quay.</li>
+      <li>a<sub>C</sub> đạt giá trị lớn nhất khi v<sub>r</sub> vuông góc với trục quay ω<sub>e</sub>.</li>
+    </ul>
+
+    <h3>4. Mô hình minh họa — Con trượt trên thanh quay đều</h3>
+    <p>Thanh <b>OB</b> quay đều quanh O với vận tốc góc <b>ω₀</b> (hệ động gắn liền với thanh).
+    Con trượt A chuyển động dọc thanh với vận tốc tương đối không đổi <b>u</b>, đang ở cách O một đoạn <b>r</b>.</p>
+    <table class="formula-table">
+      <tr><td>Vận tốc theo (⊥ thanh)</td><td>v<sub>e</sub> = ω₀·r</td></tr>
+      <tr><td>Vận tốc tương đối (dọc thanh)</td><td>v<sub>r</sub> = u</td></tr>
+      <tr><td>Gia tốc theo (hướng vào O)</td><td>a<sub>e</sub> = ω₀²·r</td></tr>
+      <tr><td>Gia tốc tương đối</td><td>a<sub>r</sub> = 0 &nbsp;(vì u = const)</td></tr>
+      <tr><td>Gia tốc Coriolis (⊥ thanh)</td><td>a<sub>C</sub> = 2ω₀·u</td></tr>
+    </table>
+  </div>
+
+  <div class="demo">
+    <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc</h3>
+    <canvas id="ch7-canvas" width="520" height="420"></canvas>
+    <div class="controls">
+      <label>Vận tốc góc ω₀ (rad/s): <span id="ch7-omega-val">1.0</span>
+        <input type="range" id="ch7-omega" min="0" max="3" step="0.05" value="1.0"></label>
+      <label>Vận tốc trượt tương đối u (m/s): <span id="ch7-u-val">0.4</span>
+        <input type="range" id="ch7-u" min="0.05" max="1.5" step="0.05" value="0.4"></label>
+      <label>Chiều dài thanh L (m): <span id="ch7-length-val">2.0</span>
+        <input type="range" id="ch7-length" min="0.5" max="3" step="0.1" value="2.0"></label>
+      <div class="mode-toggle">
+        <button id="ch7-mode-v" class="mode-btn active">Xem vận tốc</button>
+        <button id="ch7-mode-a" class="mode-btn">Xem gia tốc</button>
+      </div>
+    </div>
+    <div class="readout" id="ch7-readout"></div>
+    <p class="legend">
+      <span class="dot dot-r"></span> thành phần dọc thanh (v<sub>r</sub> / a<sub>e</sub>)&nbsp;&nbsp;
+      <span class="dot dot-e"></span> thành phần theo/Coriolis (v<sub>e</sub> / a<sub>C</sub>)&nbsp;&nbsp;
+      <span class="dot dot-a"></span> tổng hợp tuyệt đối (v<sub>a</sub> / a<sub>a</sub>)
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHƯƠNG 8 -->
+<!-- ============================================================ -->
+<section id="ch8" class="chapter">
+  <div class="theory">
+    <h2>Chương 8 — Chuyển động song phẳng của vật rắn</h2>
+
+    <h3>1. Hai chuyển động cơ bản</h3>
+    <ul>
+      <li><b>Tịnh tiến</b>: mọi đoạn thẳng gắn với vật không đổi phương; mọi điểm có cùng quỹ đạo (lệch nhau),
+      cùng vận tốc và gia tốc tại mỗi thời điểm.</li>
+      <li><b>Quay quanh trục cố định</b>: các điểm chuyển động trên các đường tròn đồng trục;
+      góc quay φ(t), vận tốc góc ω = φ̇, gia tốc góc ε = φ̈.</li>
+    </ul>
+
+    <h3>2. Vận tốc &amp; gia tốc của điểm thuộc vật (chuyển động song phẳng tổng quát)</h3>
+    <p class="formula">v<sub>M</sub> = v<sub>A</sub> + ω × AM</p>
+    <p class="formula">a<sub>M</sub> = a<sub>A</sub> + a<sup>t</sup><sub>MA</sub> + a<sup>n</sup><sub>MA</sub></p>
+    <p>trong đó a<sup>t</sup><sub>MA</sub> = ε×AM (⊥AM, độ lớn ε·AM), a<sup>n</sup><sub>MA</sub> hướng từ M về A, độ lớn ω²·AM.</p>
+
+    <h3>3. Tâm vận tốc tức thời (P)</h3>
+    <p>Là điểm thuộc hình phẳng chuyển động tại thời điểm khảo sát có <b>vận tốc bằng 0</b>.
+    Mọi điểm khác chuyển động như đang quay quanh trục qua P:</p>
+    <p class="formula">v<sub>M</sub> = ω · PM &nbsp; (⊥ PM)</p>
+    <p><b>Cách xác định P</b>: giao điểm hai đường vuông góc với vận tốc của hai điểm bất kỳ; hoặc chính là
+    điểm tiếp xúc khi vật lăn không trượt trên một mặt cố định.</p>
+
+    <h3>4. Minh họa — Bánh xe lăn không trượt</h3>
+    <p>Bánh xe bán kính <b>R</b>, quay với vận tốc góc <b>ω</b>, lăn không trượt trên mặt phẳng ngang.
+    Điểm tiếp xúc chính là tâm vận tốc tức thời P.</p>
+    <table class="formula-table">
+      <tr><td>Vận tốc tâm C</td><td>v<sub>C</sub> = ω·R</td></tr>
+      <tr><td>Vận tốc điểm cao nhất</td><td>v<sub>đỉnh</sub> = 2ω·R</td></tr>
+      <tr><td>Vận tốc điểm tiếp xúc</td><td>v = 0</td></tr>
+    </table>
+    <p>Quỹ đạo của một điểm đánh dấu trên vành bánh xe là đường <b>Cycloid (xyclôit)</b>.</p>
+  </div>
+
+  <div class="demo">
+    <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc góc</h3>
+    <canvas id="ch8-canvas" width="560" height="380"></canvas>
+    <div class="controls">
+      <label>Bán kính R (m): <span id="ch8-R-val">0.6</span>
+        <input type="range" id="ch8-R" min="0.2" max="1.2" step="0.05" value="0.6"></label>
+      <label>Vận tốc góc ω (rad/s): <span id="ch8-omega-val">1.5</span>
+        <input type="range" id="ch8-omega" min="-3" max="3" step="0.1" value="1.5"></label>
+      <label class="checkbox-label"><input type="checkbox" id="ch8-trace" checked> Vẽ vết quỹ đạo (cycloid)</label>
+      <button id="ch8-reset" class="mode-btn">Xóa vết &amp; đặt lại</button>
+    </div>
+    <div class="readout" id="ch8-readout"></div>
+    <p class="legend">
+      <span class="dot dot-a"></span> v<sub>đỉnh</sub> &nbsp;&nbsp;
+      <span class="dot dot-r"></span> v<sub>tâm</sub> &nbsp;&nbsp;
+      <span class="dot dot-e"></span> tâm vận tốc tức thời P (v=0)
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHƯƠNG 9 -->
+<!-- ============================================================ -->
+<section id="ch9" class="chapter">
+  <div class="theory">
+    <h2>Chương 9 — Động học vật rắn không gian</h2>
+
+    <h3>1. Chuyển động tương đối của vật rắn</h3>
+    <p>Tương tự công thức cộng vận tốc điểm, vận tốc góc của vật cũng tuân theo quy tắc cộng:</p>
+    <p class="formula">ω<sub>a</sub> = ω<sub>e</sub> + ω<sub>r</sub></p>
+
+    <h3>2. Vật rắn quay quanh một điểm cố định</h3>
+    <p>Tại mỗi thời điểm tồn tại một <b>trục quay tức thời</b> đi qua điểm cố định O; mọi điểm trên trục này
+    có vận tốc bằng 0.</p>
+    <p class="formula">v<sub>P</sub> = ω × r<sub>P</sub></p>
+    <p class="formula">a<sub>P</sub> = ε × r<sub>P</sub> + ω × (ω × r<sub>P</sub>)</p>
+
+    <h3>3. Chuyển động tổng quát</h3>
+    <p class="formula">v<sub>P</sub> = v<sub>A</sub> + ω × AP</p>
+    <p class="formula">a<sub>P</sub> = a<sub>A</sub> + ε × AP + ω × (ω × AP)</p>
+
+    <h3>4. Minh họa — Đĩa vừa tự quay vừa tiến động</h3>
+    <p>Đĩa bán kính <b>R</b> gắn ở đầu một trục ngang, <b>tự quay (spin)</b> quanh trục riêng của nó với vận tốc
+    góc <b>ω₂</b>; đồng thời cả cụm trục lại <b>tiến động (precession)</b> quanh một trục thẳng đứng cố định với
+    vận tốc góc <b>ω₁</b> — tương tự bài toán con quay hồi chuyển (bài 9-8).</p>
+    <p class="formula">ω = ω₁ + ω₂ &nbsp; (hai trục vuông góc nhau)</p>
+    <p>Một điểm M trên vành đĩa có vận tốc v<sub>M</sub> = ω × OM, vạch nên một quỹ đạo không gian phức tạp.</p>
+  </div>
+
+  <div class="demo">
+    <h3>Mô phỏng 3D (hình chiếu trục đo)</h3>
+    <canvas id="ch9-canvas" width="520" height="420"></canvas>
+    <div class="controls">
+      <label>Bán kính đĩa R (m): <span id="ch9-R-val">1.0</span>
+        <input type="range" id="ch9-R" min="0.4" max="1.6" step="0.05" value="1.0"></label>
+      <label>Vận tốc tiến động ω₁ (rad/s): <span id="ch9-w1-val">0.6</span>
+        <input type="range" id="ch9-w1" min="0" max="2" step="0.05" value="0.6"></label>
+      <label>Vận tốc tự quay ω₂ (rad/s): <span id="ch9-w2-val">3.0</span>
+        <input type="range" id="ch9-w2" min="0" max="6" step="0.1" value="3.0"></label>
+      <label class="checkbox-label"><input type="checkbox" id="ch9-trace" checked> Vẽ quỹ đạo điểm M</label>
+    </div>
+    <div class="readout" id="ch9-readout"></div>
+    <p class="legend">
+      <span class="dot dot-r"></span> trục tiến động (thẳng đứng)&nbsp;&nbsp;
+      <span class="dot dot-e"></span> đĩa tự quay&nbsp;&nbsp;
+      <span class="dot dot-a"></span> điểm M &amp; quỹ đạo
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHƯƠNG 13 -->
+<!-- ============================================================ -->
+<section id="ch13" class="chapter">
+  <div class="theory">
+    <h2>Chương 13 — Công và Năng lượng</h2>
+
+    <h3>1. Công của lực</h3>
+    <p class="formula">dA = F·dr = F·ds·cosα &nbsp;&nbsp;&nbsp; A = ∫F·cosα·ds</p>
+    <table class="formula-table">
+      <tr><td>Công trọng lực</td><td>A = ± mgh</td></tr>
+      <tr><td>Công lực đàn hồi (lò xo)</td><td>A = ½k(s₁² − s₂²)</td></tr>
+      <tr><td>Công của ngẫu lực / mô-men không đổi</td><td>A = M·Δφ</td></tr>
+    </table>
+
+    <h3>2. Công suất</h3>
+    <p class="formula">W(F) = F·v = Fv·cosα &nbsp;&nbsp;&nbsp; W(M) = M·ω</p>
+
+    <h3>3. Động năng</h3>
+    <table class="formula-table">
+      <tr><td>Chất điểm / vật tịnh tiến</td><td>T = ½mv²</td></tr>
+      <tr><td>Vật quay quanh trục cố định</td><td>T = ½I<sub>z</sub>ω²</td></tr>
+      <tr><td>Vật chuyển động song phẳng</td><td>T = ½mv<sub>C</sub>² + ½I<sub>C</sub>ω²</td></tr>
+      <tr><td>Hệ nhiều vật</td><td>T = ΣT<sub>k</sub></td></tr>
+    </table>
+
+    <h3>4. Định lý biến thiên động năng</h3>
+    <p class="formula">T₂ − T₁ = ΣA<sub>1→2</sub>(F<sub>k</sub>) &nbsp;&nbsp;&nbsp; (dạng vi phân: dT/dt = ΣF<sub>k</sub>·v<sub>k</sub>)</p>
+
+    <h3>5. Minh họa — Con lăn đặc đồng chất lăn không trượt</h3>
+    <p>Đĩa đặc khối lượng m, bán kính R, tâm có vận tốc v. Ràng buộc lăn không trượt: ω = v/R.
+    Mô-men quán tính đĩa đặc: I<sub>C</sub> = ½mR².</p>
+    <table class="formula-table">
+      <tr><td>Động năng tịnh tiến</td><td>T<sub>tt</sub> = ½mv²</td></tr>
+      <tr><td>Động năng quay</td><td>T<sub>quay</sub> = ½I<sub>C</sub>ω² = ¼mv²</td></tr>
+      <tr><td>Tổng động năng</td><td>T = T<sub>tt</sub> + T<sub>quay</sub> = ¾mv²</td></tr>
+    </table>
+    <p><i>Nhận xét:</i> với vật đặc đồng chất, tỉ lệ T<sub>quay</sub>/T<sub>tt</sub> luôn bằng 1/2 — không phụ
+    thuộc bán kính R. Tuy vậy R vẫn quyết định vận tốc góc ω = v/R (bán kính càng nhỏ, cùng vận tốc dài v,
+    vật quay càng nhanh).</p>
+  </div>
+
+  <div class="demo">
+    <h3>Mô phỏng — năng lượng thời gian thực</h3>
+    <canvas id="ch13-canvas" width="560" height="300"></canvas>
+    <div class="controls">
+      <label>Khối lượng m (kg): <span id="ch13-m-val">5.0</span>
+        <input type="range" id="ch13-m" min="1" max="20" step="0.5" value="5.0"></label>
+      <label>Bán kính R (m): <span id="ch13-R-val">0.4</span>
+        <input type="range" id="ch13-R" min="0.15" max="1.0" step="0.05" value="0.4"></label>
+      <label>Vận tốc dài v (m/s): <span id="ch13-v-val">1.5</span>
+        <input type="range" id="ch13-v" min="0" max="4" step="0.1" value="1.5"></label>
+    </div>
+    <div class="readout" id="ch13-readout"></div>
+    <div class="energy-bars">
+      <div class="bar-row"><span class="bar-label">T<sub>tt</sub></span><div class="bar-track"><div class="bar-fill bar-trans" id="ch13-bar-trans"></div></div><span id="ch13-trans-val" class="bar-num"></span></div>
+      <div class="bar-row"><span class="bar-label">T<sub>quay</sub></span><div class="bar-track"><div class="bar-fill bar-rot" id="ch13-bar-rot"></div></div><span id="ch13-rot-val" class="bar-num"></span></div>
+      <div class="bar-row"><span class="bar-label">T<sub>tổng</sub></span><div class="bar-track"><div class="bar-fill bar-total" id="ch13-bar-total"></div></div><span id="ch13-total-val" class="bar-num"></span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Bộ môn Cơ học ứng dụng — Trường Cơ khí, Đại học Bách Khoa Hà Nội · GV: TS. Trần Văn Quốc</p>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/ch7.js"></script>
+<script src="js/ch8.js"></script>
+<script src="js/ch9.js"></script>
+<script src="js/ch13.js"></script>
+</body>
+</html>
