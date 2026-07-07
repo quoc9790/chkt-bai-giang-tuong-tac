@@ -253,6 +253,11 @@
     <b>gia tốc không đổi</b>:</p>
     <p class="formula">a = [ 2M/r₁ − m₂g·sinβ ] / [ 2(m₁ + ¾m₂) ]</p>
     <p>Nếu a ≤ 0, mô-men M chưa đủ lớn để thắng trọng lực — hệ vẫn đứng yên.</p>
+
+    <h3>7. Ví dụ động — Bài 13-19: Vật rơi kéo con lăn hai tầng</h3>
+    <p>Vật <b>1</b> treo vào một sợi dây vắt qua ròng rọc cố định <b>2</b> (tâm O, bán kính r₂); đầu dây còn
+    lại quấn vào <b>bán kính trong r₃</b> của con lăn hai tầng <b>3</b> (bán kính ngoài R₃, tâm C), lăn không
+    trượt trên mặt phẳng nghiêng góc α. Hệ ban đầu đứng yên.</p>
   </div>
 
   <div class="demo">
@@ -295,6 +300,26 @@
       <span class="dot dot-r"></span> con lăn 2 (v<sub>A</sub>, ω₂)&nbsp;&nbsp;
       <span class="dot dot-e"></span> dây quấn
     </p>
+
+    <h3 style="margin-top:1.4rem;">Bài 13-19 — Vật rơi kéo con lăn hai tầng</h3>
+    <canvas id="ch13c-canvas" width="560" height="420"></canvas>
+    <div class="controls">
+      <label>Vận tốc rơi v₁ (m/s): <span id="ch13c-v1-val">0.60</span>
+        <input type="range" id="ch13c-v1" min="0.1" max="1.5" step="0.05" value="0.60"></label>
+      <label>Bán kính ròng rọc r₂ (m): <span id="ch13c-r2-val">0.15</span>
+        <input type="range" id="ch13c-r2" min="0.1" max="0.3" step="0.01" value="0.15"></label>
+      <label>Bán kính ngoài con lăn R₃ (m): <span id="ch13c-R3-val">0.50</span>
+        <input type="range" id="ch13c-R3" min="0.4" max="0.8" step="0.01" value="0.50"></label>
+      <label>Bán kính trong con lăn r₃ (m): <span id="ch13c-r3-val">0.20</span>
+        <input type="range" id="ch13c-r3" min="0.1" max="0.35" step="0.01" value="0.20"></label>
+      <label>Góc nghiêng α (độ): <span id="ch13c-alpha-val">25</span>
+        <input type="range" id="ch13c-alpha" min="10" max="50" step="1" value="25"></label>
+    </div>
+    <p class="legend">
+      <span class="dot dot-a"></span> vật 1&nbsp;&nbsp;
+      <span class="dot dot-r"></span> ròng rọc 2&nbsp;&nbsp;
+      <span class="dot dot-e"></span> con lăn 3 (hai tầng)
+    </p>
   </div>
 </section>
 
@@ -310,5 +335,6 @@
 <script src="js/ch9.js"></script>
 <script src="js/ch13.js"></script>
 <script src="js/ch13-winch.js"></script>
+<script src="js/ch13-yoyo.js"></script>
 </body>
 </html>
