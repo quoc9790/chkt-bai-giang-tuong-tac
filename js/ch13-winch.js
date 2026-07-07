@@ -52,6 +52,30 @@
     return [originX + wx * scale, originY - wy * scale];
   }
 
+  // external tangent line between two circles (in local u/w coords) —
+  // the cord must wrap the rims, not cut through the centres
+  function externalTangent(u1, w1, r1, u2, w2, r2) {
+    const dx = u2 - u1, dy = w2 - w1;
+    const d = Math.hypot(dx, dy) || 1e-6;
+    const phi = Math.atan2(dy, dx);
+    const ratio = Math.max(-1, Math.min(1, (r1 - r2) / d));
+    const alpha = Math.asin(ratio);
+
+    function side(ang) {
+      const vx = Math.cos(ang), vy = Math.sin(ang);
+      return {
+        T1: [u1 + r1 * vx, w1 + r1 * vy],
+        T2: [u2 + r2 * vx, w2 + r2 * vy],
+        avgW: w1 + r1 * vy + (w2 + r2 * vy),
+        ang,
+      };
+    }
+    const A = side(phi + Math.PI / 2 + alpha);
+    const B = side(phi - Math.PI / 2 - alpha);
+    // pick the tangent on the outer side (away from the incline surface, w=0)
+    return A.avgW >= B.avgW ? A : B;
+  }
+
   function drawArrow(x1, y1, x2, y2, color, width) {
     const dx = x2 - x1, dy = y2 - y1;
     const len = Math.hypot(dx, dy);
@@ -167,18 +191,22 @@
     ctx.fillStyle = "#e6ecf5";
     ctx.fillText("A", A[0] + 6, A[1] - R2px - 6);
 
-    // cord between drum rim and roller rim
-    const dx = O[0] - A[0], dy = O[1] - A[1];
-    const dlen = Math.hypot(dx, dy) || 1;
-    const ux = dx / dlen, uy = dy / dlen;
-    const cordStart = [A[0] + ux * R2px, A[1] + uy * R2px];
-    const cordEnd = [O[0] - ux * R1px, O[1] - uy * R1px];
+    // cord: proper external tangent between the two rims (wraps the rim,
+    // does not cut through the centres)
+    const tan = externalTangent(trackLen, p.r1, p.r1, s0 + s, p.r2, p.r2);
+    const Tdrum = project(tan.T1[0], tan.T1[1], p.beta);
+    const Troller = project(tan.T2[0], tan.T2[1], p.beta);
     ctx.strokeStyle = "#fc8181";
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(cordStart[0], cordStart[1]);
-    ctx.lineTo(cordEnd[0], cordEnd[1]);
+    ctx.moveTo(Tdrum[0], Tdrum[1]);
+    ctx.lineTo(Troller[0], Troller[1]);
     ctx.stroke();
+
+    // small dot at each tangent (contact) point for clarity
+    ctx.fillStyle = "#fc8181";
+    ctx.beginPath(); ctx.arc(Tdrum[0], Tdrum[1], 3, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(Troller[0], Troller[1], 3, 0, 7); ctx.fill();
 
     const w1 = (2 * v) / p.r1;
     const w2 = v / p.r2;
