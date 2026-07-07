@@ -19,7 +19,7 @@
   const trackLen = 1.4;  // metres of travel for roller 3
   const s0 = 0.3;
   const originX = 90, originY = 360;
-  const O = [420, 100]; // fixed pulley pivot, canvas px
+  const pulleyU = s0 + trackLen + 0.8; // pulley sits well beyond the roller's max travel (s0+trackLen)
 
   let s = 0;     // displacement of roller 3 along the incline
   let h = 0;     // drop of mass 1
@@ -42,26 +42,6 @@
     const wx = u * Math.cos(alpha) - w * Math.sin(alpha);
     const wy = u * Math.sin(alpha) + w * Math.cos(alpha);
     return [originX + wx * scale, originY - wy * scale];
-  }
-
-  // external tangent between two circles given directly in canvas pixel space
-  function externalTangentXY(x1, y1, r1, x2, y2, r2) {
-    const dx = x2 - x1, dy = y2 - y1;
-    const d = Math.hypot(dx, dy) || 1e-6;
-    const phi = Math.atan2(dy, dx);
-    const ratio = Math.max(-1, Math.min(1, (r1 - r2) / d));
-    const alpha = Math.asin(ratio);
-    function side(ang) {
-      const vx = Math.cos(ang), vy = Math.sin(ang);
-      return {
-        P1: [x1 + r1 * vx, y1 + r1 * vy],
-        P2: [x2 + r2 * vx, y2 + r2 * vy],
-        avgY: y1 + r1 * vy + (y2 + r2 * vy),
-      };
-    }
-    const A = side(phi + Math.PI / 2 + alpha);
-    const B = side(phi - Math.PI / 2 - alpha);
-    return A.avgY <= B.avgY ? A : B; // prefer the visually upper tangent
   }
 
   function drawDisk(cx, cy, Rpx, phi, color) {
@@ -93,7 +73,7 @@
     ctx.moveTo(originX - 40, originY);
     ctx.lineTo(originX, originY);
     ctx.stroke();
-    const top = project(trackLen + 0.4, 0, p.alpha);
+    const top = project(pulleyU + 0.3, 0, p.alpha);
     ctx.beginPath();
     ctx.moveTo(originX, originY);
     ctx.lineTo(top[0], top[1]);
@@ -109,8 +89,11 @@
     ctx.font = "12px sans-serif";
     ctx.fillText("α", originX + 32, originY - 6);
 
-    // fixed pulley 2
+    // fixed pulley 2 — mounted just above the incline, low enough that the
+    // cord wraps over its upper rim and still runs parallel to the slope
     const r2px = p.r2 * scale;
+    const pulleyW = p.R3 + p.r3 - p.r2;
+    const O = project(pulleyU, pulleyW, p.alpha);
     ctx.strokeStyle = "#5b7096";
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -139,13 +122,16 @@
     ctx.fillText("C", C[0] + 4, C[1] - 4);
     ctx.fillText("3", C[0] - R3px - 4, C[1] - R3px + 10);
 
-    // cord: pulley rim -> roller's inner-hub rim (external tangent)
-    const tan = externalTangentXY(O[0], O[1], r2px, C[0], C[1], r3px);
+    // cord: runs parallel to the incline, tangent to the pulley's underside
+    // and the roller's inner-hub top (both rims at local height w = R₃+r₃)
+    const cordW = p.R3 + p.r3;
+    const Tpulley = project(pulleyU, cordW, p.alpha);
+    const Troller = project(s0 + s, cordW, p.alpha);
     ctx.strokeStyle = "#fc8181";
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(tan.P1[0], tan.P1[1]);
-    ctx.lineTo(tan.P2[0], tan.P2[1]);
+    ctx.moveTo(Tpulley[0], Tpulley[1]);
+    ctx.lineTo(Troller[0], Troller[1]);
     ctx.stroke();
 
     // mass 1 hanging from the right side of the pulley

@@ -52,30 +52,6 @@
     return [originX + wx * scale, originY - wy * scale];
   }
 
-  // external tangent line between two circles (in local u/w coords) —
-  // the cord must wrap the rims, not cut through the centres
-  function externalTangent(u1, w1, r1, u2, w2, r2) {
-    const dx = u2 - u1, dy = w2 - w1;
-    const d = Math.hypot(dx, dy) || 1e-6;
-    const phi = Math.atan2(dy, dx);
-    const ratio = Math.max(-1, Math.min(1, (r1 - r2) / d));
-    const alpha = Math.asin(ratio);
-
-    function side(ang) {
-      const vx = Math.cos(ang), vy = Math.sin(ang);
-      return {
-        T1: [u1 + r1 * vx, w1 + r1 * vy],
-        T2: [u2 + r2 * vx, w2 + r2 * vy],
-        avgW: w1 + r1 * vy + (w2 + r2 * vy),
-        ang,
-      };
-    }
-    const A = side(phi + Math.PI / 2 + alpha);
-    const B = side(phi - Math.PI / 2 - alpha);
-    // pick the tangent on the outer side (away from the incline surface, w=0)
-    return A.avgW >= B.avgW ? A : B;
-  }
-
   function drawArrow(x1, y1, x2, y2, color, width) {
     const dx = x2 - x1, dy = y2 - y1;
     const len = Math.hypot(dx, dy);
@@ -130,7 +106,9 @@
     ctx.lineTo(originX, originY);
     ctx.stroke();
 
-    const top = project(trackLen + 0.35, 0, p.beta);
+    const drumU = trackLen + 0.3; // drum sits a bit beyond the roller's travel range
+
+    const top = project(drumU + 0.3, 0, p.beta);
     ctx.beginPath();
     ctx.moveTo(originX, originY);
     ctx.lineTo(top[0], top[1]);
@@ -146,9 +124,11 @@
     ctx.font = "12px sans-serif";
     ctx.fillText("β", originX + 34, originY - 6);
 
-    // drum 1 — fixed pivot at top of incline
-    const O = project(trackLen, p.r1, p.beta);
-    const Osupport = project(trackLen, 0, p.beta);
+    // drum 1 — fixed pivot mounted just above the incline, low enough that
+    // the cord wraps over its upper rim and still runs parallel to the slope
+    const drumW = 2 * p.r2 - p.r1;
+    const O = project(drumU, drumW, p.beta);
+    const Osupport = project(drumU, 0, p.beta);
     ctx.strokeStyle = "#5b7096";
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -191,11 +171,11 @@
     ctx.fillStyle = "#e6ecf5";
     ctx.fillText("A", A[0] + 6, A[1] - R2px - 6);
 
-    // cord: proper external tangent between the two rims (wraps the rim,
-    // does not cut through the centres)
-    const tan = externalTangent(trackLen, p.r1, p.r1, s0 + s, p.r2, p.r2);
-    const Tdrum = project(tan.T1[0], tan.T1[1], p.beta);
-    const Troller = project(tan.T2[0], tan.T2[1], p.beta);
+    // cord: runs parallel to the incline, tangent to the drum's underside
+    // and the roller's top (both rims at local height w = 2·r₂)
+    const cordW = 2 * p.r2;
+    const Tdrum = project(drumU, cordW, p.beta);
+    const Troller = project(s0 + s, cordW, p.beta);
     ctx.strokeStyle = "#fc8181";
     ctx.lineWidth = 2;
     ctx.beginPath();
