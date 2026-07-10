@@ -25,7 +25,7 @@
 <!-- CHƯƠNG 7 -->
 <!-- ============================================================ -->
 <section id="ch7" class="chapter active">
-  <div class="theory">
+  <div class="theory chapter-intro">
     <h2>Chương 7 — Chuyển động tương đối của điểm</h2>
 
     <h3>1. Ba loại chuyển động</h3>
@@ -49,40 +49,44 @@
       <li>a<sub>C</sub> = 0 khi hệ động không quay (ω<sub>e</sub>=0) hoặc khi v<sub>r</sub> song song trục quay.</li>
       <li>a<sub>C</sub> đạt giá trị lớn nhất khi v<sub>r</sub> vuông góc với trục quay ω<sub>e</sub>.</li>
     </ul>
-
-    <h3>4. Mô hình minh họa — Con trượt trên thanh quay đều</h3>
-    <p>Thanh <b>OB</b> quay đều quanh O với vận tốc góc <b>ω₀</b> (hệ động gắn liền với thanh).
-    Con trượt A chuyển động dọc thanh với vận tốc tương đối không đổi <b>u</b>, đang ở cách O một đoạn <b>r</b>.</p>
-    <table class="formula-table">
-      <tr><td>Vận tốc theo (⊥ thanh)</td><td>v<sub>e</sub> = ω₀·r</td></tr>
-      <tr><td>Vận tốc tương đối (dọc thanh)</td><td>v<sub>r</sub> = u</td></tr>
-      <tr><td>Gia tốc theo (hướng vào O)</td><td>a<sub>e</sub> = ω₀²·r</td></tr>
-      <tr><td>Gia tốc tương đối</td><td>a<sub>r</sub> = 0 &nbsp;(vì u = const)</td></tr>
-      <tr><td>Gia tốc Coriolis (⊥ thanh)</td><td>a<sub>C</sub> = 2ω₀·u</td></tr>
-    </table>
   </div>
 
-  <div class="demo">
-    <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc</h3>
-    <canvas id="ch7-canvas" width="520" height="420"></canvas>
-    <div class="controls">
-      <label>Vận tốc góc ω₀ (rad/s): <span id="ch7-omega-val">1.0</span>
-        <input type="range" id="ch7-omega" min="0" max="3" step="0.05" value="1.0"></label>
-      <label>Vận tốc trượt tương đối u (m/s): <span id="ch7-u-val">0.4</span>
-        <input type="range" id="ch7-u" min="0.05" max="1.5" step="0.05" value="0.4"></label>
-      <label>Chiều dài thanh L (m): <span id="ch7-length-val">2.0</span>
-        <input type="range" id="ch7-length" min="0.5" max="3" step="0.1" value="2.0"></label>
-      <div class="mode-toggle">
-        <button id="ch7-mode-v" class="mode-btn active">Xem vận tốc</button>
-        <button id="ch7-mode-a" class="mode-btn">Xem gia tốc</button>
-      </div>
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>4. Mô hình minh họa — Con trượt trên thanh quay đều</h3>
+      <p>Thanh <b>OB</b> quay đều quanh O với vận tốc góc <b>ω₀</b> (hệ động gắn liền với thanh).
+      Con trượt A chuyển động dọc thanh với vận tốc tương đối không đổi <b>u</b>, đang ở cách O một đoạn <b>r</b>.</p>
+      <table class="formula-table">
+        <tr><td>Vận tốc theo (⊥ thanh)</td><td>v<sub>e</sub> = ω₀·r</td></tr>
+        <tr><td>Vận tốc tương đối (dọc thanh)</td><td>v<sub>r</sub> = u</td></tr>
+        <tr><td>Gia tốc theo (hướng vào O)</td><td>a<sub>e</sub> = ω₀²·r</td></tr>
+        <tr><td>Gia tốc tương đối</td><td>a<sub>r</sub> = 0 &nbsp;(vì u = const)</td></tr>
+        <tr><td>Gia tốc Coriolis (⊥ thanh)</td><td>a<sub>C</sub> = 2ω₀·u</td></tr>
+      </table>
     </div>
-    <div class="readout" id="ch7-readout"></div>
-    <p class="legend">
-      <span class="dot dot-r"></span> thành phần dọc thanh (v<sub>r</sub> / a<sub>e</sub>)&nbsp;&nbsp;
-      <span class="dot dot-e"></span> thành phần theo/Coriolis (v<sub>e</sub> / a<sub>C</sub>)&nbsp;&nbsp;
-      <span class="dot dot-a"></span> tổng hợp tuyệt đối (v<sub>a</sub> / a<sub>a</sub>)
-    </p>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc</h3>
+      <canvas id="ch7-canvas" width="520" height="420"></canvas>
+      <div class="controls">
+        <label>Vận tốc góc ω₀ (rad/s): <span id="ch7-omega-val">1.0</span>
+          <input type="range" id="ch7-omega" min="0" max="3" step="0.05" value="1.0"></label>
+        <label>Vận tốc trượt tương đối u (m/s): <span id="ch7-u-val">0.4</span>
+          <input type="range" id="ch7-u" min="0.05" max="1.5" step="0.05" value="0.4"></label>
+        <label>Chiều dài thanh L (m): <span id="ch7-length-val">2.0</span>
+          <input type="range" id="ch7-length" min="0.5" max="3" step="0.1" value="2.0"></label>
+        <div class="mode-toggle">
+          <button id="ch7-mode-v" class="mode-btn active">Xem vận tốc</button>
+          <button id="ch7-mode-a" class="mode-btn">Xem gia tốc</button>
+        </div>
+      </div>
+      <div class="readout" id="ch7-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> thành phần dọc thanh (v<sub>r</sub> / a<sub>e</sub>)&nbsp;&nbsp;
+        <span class="dot dot-e"></span> thành phần theo/Coriolis (v<sub>e</sub> / a<sub>C</sub>)&nbsp;&nbsp;
+        <span class="dot dot-a"></span> tổng hợp tuyệt đối (v<sub>a</sub> / a<sub>a</sub>)
+      </p>
+    </div>
   </div>
 </section>
 
@@ -90,7 +94,7 @@
 <!-- CHƯƠNG 8 -->
 <!-- ============================================================ -->
 <section id="ch8" class="chapter">
-  <div class="theory">
+  <div class="theory chapter-intro">
     <h2>Chương 8 — Chuyển động song phẳng của vật rắn</h2>
 
     <h3>1. Hai chuyển động cơ bản</h3>
@@ -112,35 +116,99 @@
     <p class="formula">v<sub>M</sub> = ω · PM &nbsp; (⊥ PM)</p>
     <p><b>Cách xác định P</b>: giao điểm hai đường vuông góc với vận tốc của hai điểm bất kỳ; hoặc chính là
     điểm tiếp xúc khi vật lăn không trượt trên một mặt cố định.</p>
-
-    <h3>4. Minh họa — Bánh xe lăn không trượt</h3>
-    <p>Bánh xe bán kính <b>R</b>, quay với vận tốc góc <b>ω</b>, lăn không trượt trên mặt phẳng ngang.
-    Điểm tiếp xúc chính là tâm vận tốc tức thời P.</p>
-    <table class="formula-table">
-      <tr><td>Vận tốc tâm C</td><td>v<sub>C</sub> = ω·R</td></tr>
-      <tr><td>Vận tốc điểm cao nhất</td><td>v<sub>đỉnh</sub> = 2ω·R</td></tr>
-      <tr><td>Vận tốc điểm tiếp xúc</td><td>v = 0</td></tr>
-    </table>
-    <p>Quỹ đạo của một điểm đánh dấu trên vành bánh xe là đường <b>Cycloid (xyclôit)</b>.</p>
   </div>
 
-  <div class="demo">
-    <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc góc</h3>
-    <canvas id="ch8-canvas" width="560" height="380"></canvas>
-    <div class="controls">
-      <label>Bán kính R (m): <span id="ch8-R-val">0.6</span>
-        <input type="range" id="ch8-R" min="0.2" max="1.2" step="0.05" value="0.6"></label>
-      <label>Vận tốc góc ω (rad/s): <span id="ch8-omega-val">1.5</span>
-        <input type="range" id="ch8-omega" min="-3" max="3" step="0.1" value="1.5"></label>
-      <label class="checkbox-label"><input type="checkbox" id="ch8-trace" checked> Vẽ vết quỹ đạo (cycloid)</label>
-      <button id="ch8-reset" class="mode-btn">Xóa vết &amp; đặt lại</button>
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>4. Minh họa — Bánh xe lăn không trượt</h3>
+      <p>Bánh xe bán kính <b>R</b>, quay với vận tốc góc <b>ω</b>, lăn không trượt trên mặt phẳng ngang.
+      Điểm tiếp xúc chính là tâm vận tốc tức thời P.</p>
+      <table class="formula-table">
+        <tr><td>Vận tốc tâm C</td><td>v<sub>C</sub> = ω·R</td></tr>
+        <tr><td>Vận tốc điểm cao nhất</td><td>v<sub>đỉnh</sub> = 2ω·R</td></tr>
+        <tr><td>Vận tốc điểm tiếp xúc</td><td>v = 0</td></tr>
+      </table>
+      <p>Quỹ đạo của một điểm đánh dấu trên vành bánh xe là đường <b>Cycloid (xyclôit)</b>.</p>
     </div>
-    <div class="readout" id="ch8-readout"></div>
-    <p class="legend">
-      <span class="dot dot-a"></span> v<sub>đỉnh</sub> &nbsp;&nbsp;
-      <span class="dot dot-r"></span> v<sub>tâm</sub> &nbsp;&nbsp;
-      <span class="dot dot-e"></span> tâm vận tốc tức thời P (v=0)
-    </p>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — thay đổi bán kính &amp; vận tốc góc</h3>
+      <canvas id="ch8-canvas" width="560" height="380"></canvas>
+      <div class="controls">
+        <label>Bán kính R (m): <span id="ch8-R-val">0.6</span>
+          <input type="range" id="ch8-R" min="0.2" max="1.2" step="0.05" value="0.6"></label>
+        <label>Vận tốc góc ω (rad/s): <span id="ch8-omega-val">1.5</span>
+          <input type="range" id="ch8-omega" min="-3" max="3" step="0.1" value="1.5"></label>
+        <label class="checkbox-label"><input type="checkbox" id="ch8-trace" checked> Vẽ vết quỹ đạo (cycloid)</label>
+        <button id="ch8-reset" class="mode-btn">Xóa vết &amp; đặt lại</button>
+      </div>
+      <div class="readout" id="ch8-readout"></div>
+      <p class="legend">
+        <span class="dot dot-a"></span> v<sub>đỉnh</sub> &nbsp;&nbsp;
+        <span class="dot dot-r"></span> v<sub>tâm</sub> &nbsp;&nbsp;
+        <span class="dot dot-e"></span> tâm vận tốc tức thời P (v=0)
+      </p>
+    </div>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>5. Ví dụ động — Bài 8-2: Trụ hai tầng tời dây</h3>
+      <p><i>Đề bài:</i> Phần dây không cuốn luôn căng và thẳng đứng. Phần dây cuốn không trượt trên trụ.
+      Điểm B đang có vận tốc v<sub>B</sub> = 0,6 m/s và gia tốc a<sub>B</sub> = 2,4 m/s² cùng hướng xuống dưới.
+      Cho r = 0,08 m và R = 0,2 m. Xác định vận tốc và gia tốc điểm D.</p>
+      <p>Đầu dây cố định tại A; phần dây chưa cuốn luôn thẳng đứng và căng, phần dây cuốn không trượt vào
+      trụ tại bán kính trong r. Trụ hai tầng (bán kính trong r, bán kính ngoài R, tâm B) tịnh tiến thẳng đứng
+      khi dây nhả ra. Điểm tiếp xúc P chính là tâm vận tốc tức thời của trụ.</p>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Bài 8-2: Trụ hai tầng tời dây</h3>
+      <canvas id="ch8b-canvas" width="560" height="400"></canvas>
+      <div class="controls">
+        <label>Vận tốc tâm B, v_B (m/s): <span id="ch8b-vB-val">0.60</span>
+          <input type="range" id="ch8b-vB" min="0.2" max="1.5" step="0.05" value="0.60"></label>
+        <label>Bán kính trong r (m): <span id="ch8b-r-val">0.08</span>
+          <input type="range" id="ch8b-r" min="0.05" max="0.15" step="0.01" value="0.08"></label>
+        <label>Bán kính ngoài R (m): <span id="ch8b-R-val">0.20</span>
+          <input type="range" id="ch8b-R" min="0.15" max="0.35" step="0.01" value="0.20"></label>
+      </div>
+      <div class="readout" id="ch8b-readout"></div>
+      <p class="legend">
+        <span class="dot dot-e"></span> v<sub>P</sub> ≈ 0&nbsp;&nbsp;
+        <span class="dot dot-r"></span> v<sub>B</sub>&nbsp;&nbsp;
+        <span class="dot dot-a"></span> v<sub>D</sub>
+      </p>
+    </div>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>6. Ví dụ động — Cơ cấu tay quay con trượt</h3>
+      <p><i>Đề bài:</i> Cho cơ cấu như hình vẽ: tay quay AB dài r = √3 m. Tại thời điểm khảo sát φ = 30°,
+      AB ⊥ BC, và tay quay OA có vận tốc góc ω₀ = 2 rad/s, gia tốc góc bằng không. Tìm vận tốc, gia tốc của
+      điểm C tại thời điểm này.</p>
+      <p>Tay quay AB quay quanh trục cố định A với vận tốc góc ω₀; đầu B nối với thanh truyền BC; đầu C là
+      con trượt di chuyển trên đường trượt cố định nằm ngang.</p>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Cơ cấu tay quay con trượt</h3>
+      <canvas id="ch8c-canvas" width="560" height="320"></canvas>
+      <div class="controls">
+        <label>Chiều dài tay quay AB (m): <span id="ch8c-r-val">1.00</span>
+          <input type="range" id="ch8c-r" min="0.5" max="1.5" step="0.05" value="1.00"></label>
+        <label>Chiều dài thanh truyền BC (m): <span id="ch8c-L-val">1.80</span>
+          <input type="range" id="ch8c-L" min="1.6" max="2.4" step="0.05" value="1.80"></label>
+        <label>Vận tốc góc ω₀ (rad/s): <span id="ch8c-omega-val">2.00</span>
+          <input type="range" id="ch8c-omega" min="0.2" max="3" step="0.1" value="2.00"></label>
+      </div>
+      <div class="readout" id="ch8c-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> v<sub>B</sub>&nbsp;&nbsp;
+        <span class="dot dot-a"></span> v<sub>C</sub>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -148,7 +216,7 @@
 <!-- CHƯƠNG 9 -->
 <!-- ============================================================ -->
 <section id="ch9" class="chapter">
-  <div class="theory">
+  <div class="theory chapter-intro">
     <h2>Chương 9 — Động học vật rắn không gian</h2>
 
     <h3>1. Chuyển động tương đối của vật rắn</h3>
@@ -164,33 +232,37 @@
     <h3>3. Chuyển động tổng quát</h3>
     <p class="formula">v<sub>P</sub> = v<sub>A</sub> + ω × AP</p>
     <p class="formula">a<sub>P</sub> = a<sub>A</sub> + ε × AP + ω × (ω × AP)</p>
-
-    <h3>4. Minh họa — Đĩa vừa tự quay vừa tiến động</h3>
-    <p>Đĩa bán kính <b>R</b> gắn ở đầu một trục ngang, <b>tự quay (spin)</b> quanh trục riêng của nó với vận tốc
-    góc <b>ω₂</b>; đồng thời cả cụm trục lại <b>tiến động (precession)</b> quanh một trục thẳng đứng cố định với
-    vận tốc góc <b>ω₁</b> — tương tự bài toán con quay hồi chuyển (bài 9-8).</p>
-    <p class="formula">ω = ω₁ + ω₂ &nbsp; (hai trục vuông góc nhau)</p>
-    <p>Một điểm M trên vành đĩa có vận tốc v<sub>M</sub> = ω × OM, vạch nên một quỹ đạo không gian phức tạp.</p>
   </div>
 
-  <div class="demo">
-    <h3>Mô phỏng 3D (hình chiếu trục đo)</h3>
-    <canvas id="ch9-canvas" width="520" height="420"></canvas>
-    <div class="controls">
-      <label>Bán kính đĩa R (m): <span id="ch9-R-val">1.0</span>
-        <input type="range" id="ch9-R" min="0.4" max="1.6" step="0.05" value="1.0"></label>
-      <label>Vận tốc tiến động ω₁ (rad/s): <span id="ch9-w1-val">0.6</span>
-        <input type="range" id="ch9-w1" min="0" max="2" step="0.05" value="0.6"></label>
-      <label>Vận tốc tự quay ω₂ (rad/s): <span id="ch9-w2-val">3.0</span>
-        <input type="range" id="ch9-w2" min="0" max="6" step="0.1" value="3.0"></label>
-      <label class="checkbox-label"><input type="checkbox" id="ch9-trace" checked> Vẽ quỹ đạo điểm M</label>
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>4. Minh họa — Đĩa vừa tự quay vừa tiến động</h3>
+      <p>Đĩa bán kính <b>R</b> gắn ở đầu một trục ngang, <b>tự quay (spin)</b> quanh trục riêng của nó với vận tốc
+      góc <b>ω₂</b>; đồng thời cả cụm trục lại <b>tiến động (precession)</b> quanh một trục thẳng đứng cố định với
+      vận tốc góc <b>ω₁</b> — tương tự bài toán con quay hồi chuyển (bài 9-8).</p>
+      <p class="formula">ω = ω₁ + ω₂ &nbsp; (hai trục vuông góc nhau)</p>
+      <p>Một điểm M trên vành đĩa có vận tốc v<sub>M</sub> = ω × OM, vạch nên một quỹ đạo không gian phức tạp.</p>
     </div>
-    <div class="readout" id="ch9-readout"></div>
-    <p class="legend">
-      <span class="dot dot-r"></span> trục tiến động (thẳng đứng)&nbsp;&nbsp;
-      <span class="dot dot-e"></span> đĩa tự quay&nbsp;&nbsp;
-      <span class="dot dot-a"></span> điểm M &amp; quỹ đạo
-    </p>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng 3D (hình chiếu trục đo)</h3>
+      <canvas id="ch9-canvas" width="520" height="420"></canvas>
+      <div class="controls">
+        <label>Bán kính đĩa R (m): <span id="ch9-R-val">1.0</span>
+          <input type="range" id="ch9-R" min="0.4" max="1.6" step="0.05" value="1.0"></label>
+        <label>Vận tốc tiến động ω₁ (rad/s): <span id="ch9-w1-val">0.6</span>
+          <input type="range" id="ch9-w1" min="0" max="2" step="0.05" value="0.6"></label>
+        <label>Vận tốc tự quay ω₂ (rad/s): <span id="ch9-w2-val">3.0</span>
+          <input type="range" id="ch9-w2" min="0" max="6" step="0.1" value="3.0"></label>
+        <label class="checkbox-label"><input type="checkbox" id="ch9-trace" checked> Vẽ quỹ đạo điểm M</label>
+      </div>
+      <div class="readout" id="ch9-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> trục tiến động (thẳng đứng)&nbsp;&nbsp;
+        <span class="dot dot-e"></span> đĩa tự quay&nbsp;&nbsp;
+        <span class="dot dot-a"></span> điểm M &amp; quỹ đạo
+      </p>
+    </div>
   </div>
 </section>
 
@@ -198,7 +270,7 @@
 <!-- CHƯƠNG 13 -->
 <!-- ============================================================ -->
 <section id="ch13" class="chapter">
-  <div class="theory">
+  <div class="theory chapter-intro">
     <h2>Chương 13 — Công và Năng lượng</h2>
 
     <h3>1. Công của lực</h3>
@@ -222,104 +294,120 @@
 
     <h3>4. Định lý biến thiên động năng</h3>
     <p class="formula">T₂ − T₁ = ΣA<sub>1→2</sub>(F<sub>k</sub>) &nbsp;&nbsp;&nbsp; (dạng vi phân: dT/dt = ΣF<sub>k</sub>·v<sub>k</sub>)</p>
-
-    <h3>5. Minh họa — Con lăn đặc đồng chất lăn không trượt</h3>
-    <p>Đĩa đặc khối lượng m, bán kính R, tâm có vận tốc v. Ràng buộc lăn không trượt: ω = v/R.
-    Mô-men quán tính đĩa đặc: I<sub>C</sub> = ½mR².</p>
-    <table class="formula-table">
-      <tr><td>Động năng tịnh tiến</td><td>T<sub>tt</sub> = ½mv²</td></tr>
-      <tr><td>Động năng quay</td><td>T<sub>quay</sub> = ½I<sub>C</sub>ω² = ¼mv²</td></tr>
-      <tr><td>Tổng động năng</td><td>T = T<sub>tt</sub> + T<sub>quay</sub> = ¾mv²</td></tr>
-    </table>
-    <p><i>Nhận xét:</i> với vật đặc đồng chất, tỉ lệ T<sub>quay</sub>/T<sub>tt</sub> luôn bằng 1/2 — không phụ
-    thuộc bán kính R. Tuy vậy R vẫn quyết định vận tốc góc ω = v/R (bán kính càng nhỏ, cùng vận tốc dài v,
-    vật quay càng nhanh).</p>
-
-    <h3>6. Ví dụ động — Bài 13-9: Tời kéo con lăn lên mặt nghiêng</h3>
-    <p>Một ngẫu lực mô-men <b>M</b> không đổi tác dụng lên tang tời <b>1</b> (trụ tròn đồng chất, khối lượng
-    m₁, bán kính r₁, quay quanh trục cố định O). Dây mềm, nhẹ, không giãn quấn vào tang tời rồi quấn tiếp vào
-    con lăn <b>2</b> (trụ tròn đồng chất, khối lượng m₂, bán kính r₂), kéo nó lăn không trượt lên mặt phẳng
-    nghiêng góc β. Hệ ban đầu đứng yên.</p>
-    <p>Vì dây quấn vào <b>vành</b> con lăn (điểm nhả dây ở "đỉnh", cách tâm vận tốc tức thời — điểm tiếp xúc —
-    một đoạn 2r₂), trong khi tâm A chỉ cách tâm vận tốc tức thời một đoạn r₂, nên vận tốc dây nhả ra gấp đôi
-    vận tốc tâm A:</p>
-    <table class="formula-table">
-      <tr><td>Liên hệ động học</td><td>r₁ω₁ = 2v<sub>A</sub> &nbsp;&nbsp; , &nbsp;&nbsp; ω₂ = v<sub>A</sub>/r₂</td></tr>
-      <tr><td>Động năng hệ</td><td>T = (m₁ + ¾m₂)v<sub>A</sub>²</td></tr>
-      <tr><td>Công của ngẫu lực M (tang quay góc φ₁ = 2s/r₁)</td><td>A(M) = 2Ms/r₁</td></tr>
-      <tr><td>Công trọng lực (con lăn đi lên đoạn s)</td><td>A(P₂) = −m₂gs·sinβ</td></tr>
-    </table>
-    <p>Áp dụng định lý biến thiên động năng (T₀ = 0) và đạo hàm theo thời gian, hệ chuyển động với
-    <b>gia tốc không đổi</b>:</p>
-    <p class="formula">a = [ 2M/r₁ − m₂g·sinβ ] / [ 2(m₁ + ¾m₂) ]</p>
-    <p>Nếu a ≤ 0, mô-men M chưa đủ lớn để thắng trọng lực — hệ vẫn đứng yên.</p>
-
-    <h3>7. Ví dụ động — Bài 13-19: Vật rơi kéo con lăn hai tầng</h3>
-    <p>Vật <b>1</b> treo vào một sợi dây vắt qua ròng rọc cố định <b>2</b> (tâm O, bán kính r₂); đầu dây còn
-    lại quấn vào <b>bán kính trong r₃</b> của con lăn hai tầng <b>3</b> (bán kính ngoài R₃, tâm C), lăn không
-    trượt trên mặt phẳng nghiêng góc α. Hệ ban đầu đứng yên.</p>
   </div>
 
-  <div class="demo">
-    <h3>Mô phỏng — năng lượng thời gian thực</h3>
-    <canvas id="ch13-canvas" width="560" height="300"></canvas>
-    <div class="controls">
-      <label>Khối lượng m (kg): <span id="ch13-m-val">5.0</span>
-        <input type="range" id="ch13-m" min="1" max="20" step="0.5" value="5.0"></label>
-      <label>Bán kính R (m): <span id="ch13-R-val">0.4</span>
-        <input type="range" id="ch13-R" min="0.15" max="1.0" step="0.05" value="0.4"></label>
-      <label>Vận tốc dài v (m/s): <span id="ch13-v-val">1.5</span>
-        <input type="range" id="ch13-v" min="0" max="4" step="0.1" value="1.5"></label>
-    </div>
-    <div class="readout" id="ch13-readout"></div>
-    <div class="energy-bars">
-      <div class="bar-row"><span class="bar-label">T<sub>tt</sub></span><div class="bar-track"><div class="bar-fill bar-trans" id="ch13-bar-trans"></div></div><span id="ch13-trans-val" class="bar-num"></span></div>
-      <div class="bar-row"><span class="bar-label">T<sub>quay</sub></span><div class="bar-track"><div class="bar-fill bar-rot" id="ch13-bar-rot"></div></div><span id="ch13-rot-val" class="bar-num"></span></div>
-      <div class="bar-row"><span class="bar-label">T<sub>tổng</sub></span><div class="bar-track"><div class="bar-fill bar-total" id="ch13-bar-total"></div></div><span id="ch13-total-val" class="bar-num"></span></div>
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>5. Minh họa — Con lăn đặc đồng chất lăn không trượt</h3>
+      <p>Đĩa đặc khối lượng m, bán kính R, tâm có vận tốc v. Ràng buộc lăn không trượt: ω = v/R.
+      Mô-men quán tính đĩa đặc: I<sub>C</sub> = ½mR².</p>
+      <table class="formula-table">
+        <tr><td>Động năng tịnh tiến</td><td>T<sub>tt</sub> = ½mv²</td></tr>
+        <tr><td>Động năng quay</td><td>T<sub>quay</sub> = ½I<sub>C</sub>ω² = ¼mv²</td></tr>
+        <tr><td>Tổng động năng</td><td>T = T<sub>tt</sub> + T<sub>quay</sub> = ¾mv²</td></tr>
+      </table>
+      <p><i>Nhận xét:</i> với vật đặc đồng chất, tỉ lệ T<sub>quay</sub>/T<sub>tt</sub> luôn bằng 1/2 — không phụ
+      thuộc bán kính R. Tuy vậy R vẫn quyết định vận tốc góc ω = v/R (bán kính càng nhỏ, cùng vận tốc dài v,
+      vật quay càng nhanh).</p>
     </div>
 
-    <h3 style="margin-top:1.4rem;">Bài 13-9 — Tời kéo con lăn lên mặt nghiêng</h3>
-    <canvas id="ch13b-canvas" width="560" height="360"></canvas>
-    <div class="controls">
-      <label>Bán kính tang tời r₁ (m): <span id="ch13b-r1-val">0.20</span>
-        <input type="range" id="ch13b-r1" min="0.1" max="0.25" step="0.01" value="0.20"></label>
-      <label>Bán kính con lăn r₂ (m): <span id="ch13b-r2-val">0.30</span>
-        <input type="range" id="ch13b-r2" min="0.15" max="0.6" step="0.01" value="0.30"></label>
-      <label>Khối lượng tang tời m₁ (kg): <span id="ch13b-m1-val">5.0</span>
-        <input type="range" id="ch13b-m1" min="1" max="15" step="0.5" value="5.0"></label>
-      <label>Khối lượng con lăn m₂ (kg): <span id="ch13b-m2-val">8.0</span>
-        <input type="range" id="ch13b-m2" min="1" max="20" step="0.5" value="8.0"></label>
-      <label>Mô-men M (N·m): <span id="ch13b-M-val">5</span>
-        <input type="range" id="ch13b-M" min="0" max="60" step="1" value="5"></label>
-      <label>Góc nghiêng β (độ): <span id="ch13b-beta-val">30</span>
-        <input type="range" id="ch13b-beta" min="10" max="60" step="1" value="30"></label>
+    <div class="demo example-demo">
+      <h3>Mô phỏng — năng lượng thời gian thực</h3>
+      <canvas id="ch13-canvas" width="560" height="300"></canvas>
+      <div class="controls">
+        <label>Khối lượng m (kg): <span id="ch13-m-val">5.0</span>
+          <input type="range" id="ch13-m" min="1" max="20" step="0.5" value="5.0"></label>
+        <label>Bán kính R (m): <span id="ch13-R-val">0.4</span>
+          <input type="range" id="ch13-R" min="0.15" max="1.0" step="0.05" value="0.4"></label>
+        <label>Vận tốc dài v (m/s): <span id="ch13-v-val">1.5</span>
+          <input type="range" id="ch13-v" min="0" max="4" step="0.1" value="1.5"></label>
+      </div>
+      <div class="readout" id="ch13-readout"></div>
+      <div class="energy-bars">
+        <div class="bar-row"><span class="bar-label">T<sub>tt</sub></span><div class="bar-track"><div class="bar-fill bar-trans" id="ch13-bar-trans"></div></div><span id="ch13-trans-val" class="bar-num"></span></div>
+        <div class="bar-row"><span class="bar-label">T<sub>quay</sub></span><div class="bar-track"><div class="bar-fill bar-rot" id="ch13-bar-rot"></div></div><span id="ch13-rot-val" class="bar-num"></span></div>
+        <div class="bar-row"><span class="bar-label">T<sub>tổng</sub></span><div class="bar-track"><div class="bar-fill bar-total" id="ch13-bar-total"></div></div><span id="ch13-total-val" class="bar-num"></span></div>
+      </div>
     </div>
-    <div class="readout" id="ch13b-readout"></div>
-    <p class="legend">
-      <span class="dot dot-a"></span> tang tời 1 (M, ω₁)&nbsp;&nbsp;
-      <span class="dot dot-r"></span> con lăn 2 (v<sub>A</sub>, ω₂)&nbsp;&nbsp;
-      <span class="dot dot-e"></span> dây quấn
-    </p>
+  </div>
 
-    <h3 style="margin-top:1.4rem;">Bài 13-19 — Vật rơi kéo con lăn hai tầng</h3>
-    <canvas id="ch13c-canvas" width="560" height="420"></canvas>
-    <div class="controls">
-      <label>Vận tốc rơi v₁ (m/s): <span id="ch13c-v1-val">0.60</span>
-        <input type="range" id="ch13c-v1" min="0.1" max="1.5" step="0.05" value="0.60"></label>
-      <label>Bán kính ròng rọc r₂ (m): <span id="ch13c-r2-val">0.15</span>
-        <input type="range" id="ch13c-r2" min="0.1" max="0.3" step="0.01" value="0.15"></label>
-      <label>Bán kính ngoài con lăn R₃ (m): <span id="ch13c-R3-val">0.50</span>
-        <input type="range" id="ch13c-R3" min="0.4" max="0.8" step="0.01" value="0.50"></label>
-      <label>Bán kính trong con lăn r₃ (m): <span id="ch13c-r3-val">0.20</span>
-        <input type="range" id="ch13c-r3" min="0.1" max="0.35" step="0.01" value="0.20"></label>
-      <label>Góc nghiêng α (độ): <span id="ch13c-alpha-val">25</span>
-        <input type="range" id="ch13c-alpha" min="10" max="50" step="1" value="25"></label>
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>6. Ví dụ động — Bài 13-9: Tời kéo con lăn lên mặt nghiêng</h3>
+      <p>Một ngẫu lực mô-men <b>M</b> không đổi tác dụng lên tang tời <b>1</b> (trụ tròn đồng chất, khối lượng
+      m₁, bán kính r₁, quay quanh trục cố định O). Dây mềm, nhẹ, không giãn quấn vào tang tời rồi quấn tiếp vào
+      con lăn <b>2</b> (trụ tròn đồng chất, khối lượng m₂, bán kính r₂), kéo nó lăn không trượt lên mặt phẳng
+      nghiêng góc β. Hệ ban đầu đứng yên.</p>
+      <p>Vì dây quấn vào <b>vành</b> con lăn (điểm nhả dây ở "đỉnh", cách tâm vận tốc tức thời — điểm tiếp xúc —
+      một đoạn 2r₂), trong khi tâm A chỉ cách tâm vận tốc tức thời một đoạn r₂, nên vận tốc dây nhả ra gấp đôi
+      vận tốc tâm A:</p>
+      <table class="formula-table">
+        <tr><td>Liên hệ động học</td><td>r₁ω₁ = 2v<sub>A</sub> &nbsp;&nbsp; , &nbsp;&nbsp; ω₂ = v<sub>A</sub>/r₂</td></tr>
+        <tr><td>Động năng hệ</td><td>T = (m₁ + ¾m₂)v<sub>A</sub>²</td></tr>
+        <tr><td>Công của ngẫu lực M (tang quay góc φ₁ = 2s/r₁)</td><td>A(M) = 2Ms/r₁</td></tr>
+        <tr><td>Công trọng lực (con lăn đi lên đoạn s)</td><td>A(P₂) = −m₂gs·sinβ</td></tr>
+      </table>
+      <p>Áp dụng định lý biến thiên động năng (T₀ = 0) và đạo hàm theo thời gian, hệ chuyển động với
+      <b>gia tốc không đổi</b>:</p>
+      <p class="formula">a = [ 2M/r₁ − m₂g·sinβ ] / [ 2(m₁ + ¾m₂) ]</p>
+      <p>Nếu a ≤ 0, mô-men M chưa đủ lớn để thắng trọng lực — hệ vẫn đứng yên.</p>
     </div>
-    <p class="legend">
-      <span class="dot dot-a"></span> vật 1&nbsp;&nbsp;
-      <span class="dot dot-r"></span> ròng rọc 2&nbsp;&nbsp;
-      <span class="dot dot-e"></span> con lăn 3 (hai tầng)
-    </p>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Bài 13-9: Tời kéo con lăn lên mặt nghiêng</h3>
+      <canvas id="ch13b-canvas" width="560" height="360"></canvas>
+      <div class="controls">
+        <label>Bán kính tang tời r₁ (m): <span id="ch13b-r1-val">0.20</span>
+          <input type="range" id="ch13b-r1" min="0.1" max="0.25" step="0.01" value="0.20"></label>
+        <label>Bán kính con lăn r₂ (m): <span id="ch13b-r2-val">0.30</span>
+          <input type="range" id="ch13b-r2" min="0.15" max="0.6" step="0.01" value="0.30"></label>
+        <label>Khối lượng tang tời m₁ (kg): <span id="ch13b-m1-val">5.0</span>
+          <input type="range" id="ch13b-m1" min="1" max="15" step="0.5" value="5.0"></label>
+        <label>Khối lượng con lăn m₂ (kg): <span id="ch13b-m2-val">8.0</span>
+          <input type="range" id="ch13b-m2" min="1" max="20" step="0.5" value="8.0"></label>
+        <label>Mô-men M (N·m): <span id="ch13b-M-val">5</span>
+          <input type="range" id="ch13b-M" min="0" max="60" step="1" value="5"></label>
+        <label>Góc nghiêng β (độ): <span id="ch13b-beta-val">30</span>
+          <input type="range" id="ch13b-beta" min="10" max="60" step="1" value="30"></label>
+      </div>
+      <div class="readout" id="ch13b-readout"></div>
+      <p class="legend">
+        <span class="dot dot-a"></span> tang tời 1 (M, ω₁)&nbsp;&nbsp;
+        <span class="dot dot-r"></span> con lăn 2 (v<sub>A</sub>, ω₂)&nbsp;&nbsp;
+        <span class="dot dot-e"></span> dây quấn
+      </p>
+    </div>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>7. Ví dụ động — Bài 13-19: Vật rơi kéo con lăn hai tầng</h3>
+      <p>Vật <b>1</b> treo vào một sợi dây vắt qua ròng rọc cố định <b>2</b> (tâm O, bán kính r₂); đầu dây còn
+      lại quấn vào <b>bán kính trong r₃</b> của con lăn hai tầng <b>3</b> (bán kính ngoài R₃, tâm C), lăn không
+      trượt trên mặt phẳng nghiêng góc α. Hệ ban đầu đứng yên.</p>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Bài 13-19: Vật rơi kéo con lăn hai tầng</h3>
+      <canvas id="ch13c-canvas" width="560" height="420"></canvas>
+      <div class="controls">
+        <label>Vận tốc rơi v₁ (m/s): <span id="ch13c-v1-val">0.60</span>
+          <input type="range" id="ch13c-v1" min="0.1" max="1.5" step="0.05" value="0.60"></label>
+        <label>Bán kính ròng rọc r₂ (m): <span id="ch13c-r2-val">0.15</span>
+          <input type="range" id="ch13c-r2" min="0.1" max="0.3" step="0.01" value="0.15"></label>
+        <label>Bán kính ngoài con lăn R₃ (m): <span id="ch13c-R3-val">0.50</span>
+          <input type="range" id="ch13c-R3" min="0.4" max="0.8" step="0.01" value="0.50"></label>
+        <label>Bán kính trong con lăn r₃ (m): <span id="ch13c-r3-val">0.20</span>
+          <input type="range" id="ch13c-r3" min="0.1" max="0.35" step="0.01" value="0.20"></label>
+        <label>Góc nghiêng α (độ): <span id="ch13c-alpha-val">25</span>
+          <input type="range" id="ch13c-alpha" min="10" max="50" step="1" value="25"></label>
+      </div>
+      <p class="legend">
+        <span class="dot dot-a"></span> vật 1&nbsp;&nbsp;
+        <span class="dot dot-r"></span> ròng rọc 2&nbsp;&nbsp;
+        <span class="dot dot-e"></span> con lăn 3 (hai tầng)
+      </p>
+    </div>
   </div>
 </section>
 
@@ -332,6 +420,8 @@
 <script src="js/nav.js"></script>
 <script src="js/ch7.js"></script>
 <script src="js/ch8.js"></script>
+<script src="js/ch8-spool.js"></script>
+<script src="js/ch8-slidercrank.js"></script>
 <script src="js/ch9.js"></script>
 <script src="js/ch13.js"></script>
 <script src="js/ch13-winch.js"></script>
