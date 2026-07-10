@@ -125,15 +125,16 @@
     ctx.fillStyle = "#0b1220";
     ctx.fillText("C", Cx - 4, Cy + 4);
 
-    // omega0 curved arrow near A
+    // omega0 curved arrow near A — arrowhead points in the direction OA
+    // actually rotates (CCW, i.e. decreasing canvas angle)
     ctx.strokeStyle = "#4fd1c5";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(Apx, Apy, 26, -1.9, -0.5, false);
     ctx.stroke();
-    const aAng = -0.5;
+    const aAng = -1.9;
     drawArrow(
-      Apx + 26 * Math.cos(aAng - 0.25), Apy + 26 * Math.sin(aAng - 0.25),
+      Apx + 26 * Math.cos(aAng + 0.25), Apy + 26 * Math.sin(aAng + 0.25),
       Apx + 26 * Math.cos(aAng), Apy + 26 * Math.sin(aAng),
       "#4fd1c5", 2
     );
@@ -141,7 +142,7 @@
     ctx.fillText("ω₀", Apx + 34, Apy - 20);
 
     // velocity vectors at B and C
-    const vscale = 30; // px per (m/s)
+    const vscale = 45; // px per (m/s)
     drawArrow(Bx, By, Bx + vBm[0] * vscale, By - vBm[1] * vscale, "#f6ad55", 3);
     drawArrow(Cx, Cy, Cx + vCx * vscale, Cy, "#4fd1c5", 3);
 

@@ -112,7 +112,7 @@
     // velocity vectors
     const vC = omega * R;      // m/s
     const vTop = 2 * vC;
-    const vscale = 18; // px per (m/s)
+    const vscale = 35; // px per (m/s)
 
     ctx.fillText("C", xC + 6, cy - Rpx - 6);
     drawArrow(xC, cy, xC + vC * vscale, cy, "#4fd1c5", 3);

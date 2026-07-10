@@ -116,7 +116,7 @@
     const omega = p.vB / p.r;
     const vD = p.vB + omega * p.R; // = vB * (R + r) / r, derived via v_D = v_B + ω×BD
 
-    const vscale = 40; // px per (m/s)
+    const vscale = 55; // px per (m/s)
     // P ~ 0 (small red dot only, already drawn)
     drawArrow(Bx, yB, Bx, yB + p.vB * vscale, "#f6ad55", 3);
     drawArrow(Dx, Dy, Dx, Dy + vD * vscale, "#4fd1c5", 3);
