@@ -15,6 +15,7 @@
     <button class="nav-btn active" data-target="ch7">Chương 7<br><small>Chuyển động tương đối của điểm</small></button>
     <button class="nav-btn" data-target="ch8">Chương 8<br><small>Chuyển động song phẳng</small></button>
     <button class="nav-btn" data-target="ch9">Chương 9<br><small>Động học vật rắn không gian</small></button>
+    <button class="nav-btn" data-target="ch11">Chương 12<br><small>Động lượng &amp; Chuyển động khối tâm</small></button>
     <button class="nav-btn" data-target="ch13">Chương 13<br><small>Công &amp; Năng lượng</small></button>
   </nav>
 </header>
@@ -267,6 +268,143 @@
 </section>
 
 <!-- ============================================================ -->
+<!-- CHƯƠNG 11 -->
+<!-- ============================================================ -->
+<section id="ch11" class="chapter">
+  <div class="theory chapter-intro">
+    <h2>Chương 12 — Định lý biến thiên động lượng &amp; Chuyển động khối tâm</h2>
+
+    <h3>1. Động lượng của vật rắn và cơ hệ</h3>
+    <p class="formula"><b>p</b> = ∫<b>v</b> dm = m <b>v</b><sub>C</sub></p>
+    <p>Đối với cơ hệ gồm nhiều vật rắn và chất điểm:</p>
+    <p class="formula"><b>p</b> = Σ m<sub>k</sub><b>v</b><sub>k</sub> + Σ m<sub>i</sub><b>v</b><sub>Ci</sub> = (Σm) <b>v</b><sub>C</sub></p>
+
+    <h3>2. Định lý biến thiên động lượng</h3>
+    <table class="formula-table">
+      <tr><td>Đối với chất điểm</td><td>d(m<b>v</b>) = <b>F</b>dt = d<b>S</b> &nbsp;⟹&nbsp; <b>p</b>(t₂) − <b>p</b>(t₁) = <b>S</b></td></tr>
+      <tr><td>Đối với cơ hệ</td><td>d<b>p</b>/dt = Σ<b>F</b><sup>e</sup><sub>k</sub> &nbsp;⟹&nbsp; m <b>a</b><sub>C</sub> = Σ<b>F</b><sup>e</sup><sub>k</sub></td></tr>
+    </table>
+    <p class="formula"><b>p</b>(t₂) − <b>p</b>(t₁) = Σ <b>S</b><sup>e</sup><sub>k</sub></p>
+
+    <h3>3. Các trường hợp bảo toàn</h3>
+    <table class="formula-table">
+      <tr><td>Tổng ngoại lực bằng 0</td><td>Σ<b>F</b><sup>e</sup><sub>k</sub> = 0 &nbsp;⟹&nbsp; m <b>v</b><sub>C</sub> = const</td></tr>
+      <tr><td>Tổng hình chiếu ngoại lực theo x bằng 0</td><td>ΣF<sup>e</sup><sub>kx</sub> = 0 &nbsp;⟹&nbsp; m ẋ<sub>C</sub> = const</td></tr>
+    </table>
+    <p>Nếu hệ ban đầu đứng yên và không có ngoại lực theo phương x (ví dụ: hệ đặt trên nền hoặc mặt nước
+    không ma sát), thì <b>vị trí khối tâm theo phương x không đổi</b> trong suốt quá trình chuyển động — đây
+    là công cụ chính để giải ba bài toán "vật trượt trên nêm/lăng trụ/xà lan tự do" dưới đây.</p>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>4. Ví dụ động — Vật A trượt trên lăng trụ đang chuyển động</h3>
+      <p><i>Đề bài:</i> Cơ hệ gồm: vật A: m₁, lăng trụ: m₂, góc nghiêng α. Lăng trụ đặt trên mặt ngang nhẵn
+      như hình vẽ. Khi t = 0: vật A nằm yên tương đối trên mặt lăng trụ, lăng trụ trượt ngang sang phải với
+      vận tốc v₀. Sau đó cho vật A trượt xuống theo mặt phẳng nghiêng của lăng trụ với vận tốc tương đối
+      u = at. Tìm vận tốc của lăng trụ.</p>
+      <p>Mặt nền nhẵn nên không có ngoại lực theo phương ngang; động lượng ngang của hệ được bảo toàn:</p>
+      <table class="formula-table">
+        <tr><td>Vận tốc lăng trụ</td><td>v₂(t) = v₀ − m₁·u·cosα /(m₁+m₂)</td></tr>
+      </table>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Vật trượt trên lăng trụ tự do</h3>
+      <canvas id="ch11a-canvas" width="560" height="360"></canvas>
+      <div class="controls">
+        <label>Khối lượng vật A, m₁ (kg): <span id="ch11a-m1-val">3.0</span>
+          <input type="range" id="ch11a-m1" min="1" max="10" step="0.5" value="3.0"></label>
+        <label>Khối lượng lăng trụ, m₂ (kg): <span id="ch11a-m2-val">8.0</span>
+          <input type="range" id="ch11a-m2" min="2" max="20" step="0.5" value="8.0"></label>
+        <label>Góc nghiêng α (độ): <span id="ch11a-alpha-val">30</span>
+          <input type="range" id="ch11a-alpha" min="15" max="60" step="1" value="30"></label>
+        <label>Vận tốc ban đầu v₀ (m/s): <span id="ch11a-v0-val">0.80</span>
+          <input type="range" id="ch11a-v0" min="0.2" max="2" step="0.05" value="0.80"></label>
+        <label>Hệ số gia tốc tương đối a (m/s²): <span id="ch11a-a-val">0.60</span>
+          <input type="range" id="ch11a-a" min="0.2" max="2" step="0.05" value="0.60"></label>
+      </div>
+      <div class="readout" id="ch11a-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> vật A&nbsp;&nbsp;
+        <span class="dot dot-a"></span> lăng trụ (m₂)
+      </p>
+    </div>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>5. Ví dụ động — Bài 12-10: Lăng trụ với hai vật nối dây qua ròng rọc</h3>
+      <p><i>Đề bài:</i> Hai vật nặng A và B có khối lượng là m₁ và m₂ được nối với nhau bằng một sợi dây
+      mềm, nhẹ và không giãn và được đặt trên các mặt KL và KE của lăng trụ DEKL. Lăng trụ có khối lượng m₃
+      được đặt trên nền ngang nhẵn và cứng. Tìm di chuyển Δ của lăng trụ khi vật nặng A trượt xuống theo mặt
+      nghiêng KL một đoạn dài s. Ban đầu hệ đứng yên.</p>
+      <table class="formula-table">
+        <tr><td>Di chuyển của lăng trụ</td><td>Δ = − s(m₁cosα + m₂) / (m₁+m₂+m₃)</td></tr>
+      </table>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Bài 12-10</h3>
+      <canvas id="ch11b-canvas" width="560" height="380"></canvas>
+      <div class="controls">
+        <label>Khối lượng vật A, m₁ (kg): <span id="ch11b-m1-val">3.0</span>
+          <input type="range" id="ch11b-m1" min="1" max="10" step="0.5" value="3.0"></label>
+        <label>Khối lượng vật B, m₂ (kg): <span id="ch11b-m2-val">2.0</span>
+          <input type="range" id="ch11b-m2" min="1" max="10" step="0.5" value="2.0"></label>
+        <label>Khối lượng lăng trụ, m₃ (kg): <span id="ch11b-m3-val">10.0</span>
+          <input type="range" id="ch11b-m3" min="2" max="25" step="0.5" value="10.0"></label>
+        <label>Góc nghiêng α (độ): <span id="ch11b-alpha-val">30</span>
+          <input type="range" id="ch11b-alpha" min="15" max="60" step="1" value="30"></label>
+        <label>Tốc độ trượt tương đối (m/s): <span id="ch11b-v-val">0.40</span>
+          <input type="range" id="ch11b-v" min="0.1" max="1" step="0.05" value="0.40"></label>
+      </div>
+      <div class="readout" id="ch11b-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> vật A&nbsp;&nbsp;
+        <span class="dot dot-e"></span> vật B&nbsp;&nbsp;
+        <span class="dot dot-a"></span> lăng trụ DEKL
+      </p>
+    </div>
+  </div>
+
+  <div class="example-row">
+    <div class="theory example-text">
+      <h3>6. Ví dụ động — Bài 12-15: Ô tô trên xà lan</h3>
+      <p><i>Đề bài:</i> Trên một xà lan A khối lượng M đang đứng yên có một ô-tô khối lượng m chuyển động
+      theo quy luật s(t) = s₀ + b(αt + e<sup>−αt</sup> − 1), bỏ qua lực cản của nước lên xà lan.</p>
+      <p>a) Xác định vận tốc của xà lan v<sub>A</sub>(t).<br>
+      b) Nếu xà lan được giữ cố định bằng một dây neo nằm ngang, xác định lực căng dây neo.</p>
+      <table class="formula-table">
+        <tr><td>Vị trí xà lan (tự do)</td><td>X(t) = − [m/(m+M)]·s(t)</td></tr>
+        <tr><td>Lực căng dây neo (cố định)</td><td>T(t) = m·b·α²·e<sup>−αt</sup></td></tr>
+      </table>
+    </div>
+
+    <div class="demo example-demo">
+      <h3>Mô phỏng — Bài 12-15</h3>
+      <canvas id="ch11c-canvas" width="560" height="300"></canvas>
+      <div class="controls">
+        <label>Khối lượng ô tô, m (kg): <span id="ch11c-m-val">2.0</span>
+          <input type="range" id="ch11c-m" min="1" max="10" step="0.5" value="2.0"></label>
+        <label>Khối lượng xà lan, M (kg): <span id="ch11c-M-val">20</span>
+          <input type="range" id="ch11c-M" min="10" max="50" step="1" value="20"></label>
+        <label>Hệ số b (m): <span id="ch11c-b-val">1.50</span>
+          <input type="range" id="ch11c-b" min="0.5" max="3" step="0.1" value="1.50"></label>
+        <label>Hệ số α (1/s): <span id="ch11c-alpha-val">0.50</span>
+          <input type="range" id="ch11c-alpha" min="0.2" max="1.5" step="0.05" value="0.50"></label>
+        <label class="checkbox-label"><input type="checkbox" id="ch11c-moored"> Neo cố định xà lan (phần b)</label>
+      </div>
+      <div class="readout" id="ch11c-readout"></div>
+      <p class="legend">
+        <span class="dot dot-r"></span> ô tô&nbsp;&nbsp;
+        <span class="dot dot-a"></span> xà lan
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- CHƯƠNG 13 -->
 <!-- ============================================================ -->
 <section id="ch13" class="chapter">
@@ -423,6 +561,9 @@
 <script src="js/ch8-spool.js"></script>
 <script src="js/ch8-slidercrank.js"></script>
 <script src="js/ch9.js"></script>
+<script src="js/ch11-wedge.js"></script>
+<script src="js/ch11-pulley.js"></script>
+<script src="js/ch11-barge.js"></script>
 <script src="js/ch13.js"></script>
 <script src="js/ch13-winch.js"></script>
 <script src="js/ch13-yoyo.js"></script>
